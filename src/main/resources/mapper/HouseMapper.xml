@@ -3,13 +3,63 @@
 <mapper namespace="com.yrxh.dao.HouseDao" >
   <resultMap id="BaseResultMap" type="com.yrxh.modle.House" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-
+    <result column="community" property="community" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="owner" property="owner" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
+    <result column="repair" property="repair" jdbcType="VARCHAR" />
   </resultMap>
 
-<insert id="insert" parameterMap="com.yrxh.modle.House">
-    insert into
-
+<insert id="insert" parameterType="com.yrxh.modle.House">
+    insert into house_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="community !=null">
+            community,
+        </if>
+        <if test="location !=null">
+            location,
+        </if>
+        <if test="owner !=null">
+            owner,
+        </if>
+        <if test="area !=null">
+            area,
+        </if>
+        <if test="phone !=null">
+            phone,
+        </if>
+        <if test="houseType !=null">
+            house_type,
+        </if>
+        <if test="repair !=null">
+            repair,
+        </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides=",">
+        <if test="community !=null">
+            #{community,jdbcType=VARCHAR},
+        </if>
+        <if test="location !=null">
+            #{location,jdbcType=VARCHAR},
+        </if>
+        <if test="owner !=null">
+            #{owner,jdbcType=VARCHAR},
+        </if>
+        <if test="area !=null">
+            #{area,jdbcType=VARCHAR},
+        </if>
+        <if test="phone !=null">
+            #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="houseType !=null">
+            #{houseType,jdbcType=VARCHAR},
+        </if>
+        <if test="repair !=null">
+            #{repair,jdbcType=VARCHAR},
+        </if>
+    </trim>
 </insert>
 
 </mapper>
