@@ -8,7 +8,7 @@ import java.util.Map;
  * 封装后的HashMap，继承自BaseMap，最常用的场景是在Controller中获取request的参数
  * 并传递到Service, Dao中供数据库所需参数使用
  * 注意：！！！！为了规范代码，此Map仅仅用于查询的时候传参使用，不可用于其它地方！！！！
- * @author wangwei
+ * @author
  */ 
 public class ParamMap extends BaseMap {
 	

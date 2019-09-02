@@ -12,7 +12,7 @@ import java.util.Locale;
 
 /***
  * 封装后的HashMap，方便获取值
- * @author 王威
+ * @author
  */
 public class BaseMap extends HashMap<String, Object> implements Serializable {
 	

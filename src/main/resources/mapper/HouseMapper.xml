@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yrxh.dao.HouseDao" >
-  <resultMap id="BaseResultMap" type="com.yrxh.modle.House" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="community" property="community" jdbcType="VARCHAR" />
-    <result column="location" property="location" jdbcType="VARCHAR" />
-    <result column="owner" property="owner" jdbcType="VARCHAR" />
-    <result column="area" property="area" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
-    <result column="repair" property="repair" jdbcType="VARCHAR" />
-  </resultMap>
-
-<insert id="insert" parameterType="com.yrxh.modle.House">
+    <resultMap id="BaseResultMap" type="com.yrxh.modle.House" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="community" property="community" jdbcType="VARCHAR" />
+        <result column="location" property="location" jdbcType="VARCHAR" />
+        <result column="owner" property="owner" jdbcType="VARCHAR" />
+        <result column="area" property="area" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="house_type1" property="houseType1" jdbcType="VARCHAR" />
+        <result column="house_type2" property="houseType2" jdbcType="VARCHAR" />
+        <result column="house_type3" property="houseType3" jdbcType="VARCHAR" />
+        <result column="repair1" property="repair1" jdbcType="VARCHAR" />
+        <result column="repair2" property="repair2" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+    <insert id="insert" parameterType="com.yrxh.modle.House">
     insert into house_base
     <trim prefix="(" suffix=")" suffixOverrides=",">
         <if test="community !=null">
@@ -30,11 +33,23 @@
         <if test="phone !=null">
             phone,
         </if>
-        <if test="houseType !=null">
-            house_type,
+        <if test="houseType1 !=null">
+            house_type1,
         </if>
-        <if test="repair !=null">
-            repair,
+        <if test="houseType2 !=null">
+            house_type2,
+        </if>
+        <if test="houseType3 !=null">
+            house_type3,
+        </if>
+        <if test="repair1 !=null">
+            repair1,
+        </if>
+        <if test="repair2 !=null">
+            repair2,
+        </if>
+        <if test="remark !=null">
+            remark,
         </if>
     </trim>
     <trim prefix="values(" suffix=")" suffixOverrides=",">
@@ -53,13 +68,44 @@
         <if test="phone !=null">
             #{phone,jdbcType=VARCHAR},
         </if>
-        <if test="houseType !=null">
-            #{houseType,jdbcType=VARCHAR},
+        <if test="houseType1 !=null">
+            #{houseType1,jdbcType=VARCHAR},
         </if>
-        <if test="repair !=null">
-            #{repair,jdbcType=VARCHAR},
+        <if test="houseType2 !=null">
+            #{houseType2,jdbcType=VARCHAR},
+        </if>
+        <if test="houseType3 !=null">
+            #{houseType3,jdbcType=VARCHAR},
+        </if>
+        <if test="repair1 !=null">
+            #{repair1,jdbcType=VARCHAR},
+        </if>
+        <if test="repair2 !=null">
+            #{repair2,jdbcType=VARCHAR},
+        </if>
+        <if test="remark !=null">
+            #{remark,jdbcType=VARCHAR},
         </if>
     </trim>
 </insert>
+
+    <select id="selectHouseList" parameterType="map" resultMap="BaseResultMap">
+      SELECT * from house_base
+      WHERE 1=1
+      <if test="community !=null">
+          and community = #{community}
+      </if>
+      <if test="minArea !=null">
+          and area <![CDATA[>=]]> #{minArea}
+      </if>
+      <if test="maxArea !=null">
+          and area <![CDATA[<=]]> #{maxArea}
+      </if>
+    <if test="offset !=null">
+    LIMIT #{offset},#{limit}
+    </if>
+    </select>
+
+
 
 </mapper>

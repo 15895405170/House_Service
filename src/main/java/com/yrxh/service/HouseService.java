@@ -11,5 +11,6 @@ import java.util.List;
 public interface HouseService {
     int insert(House house) throws Exception;
 
+    List<House> findList(ParamMap paramMap);
 
 }

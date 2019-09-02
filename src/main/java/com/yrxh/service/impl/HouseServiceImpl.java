@@ -3,6 +3,7 @@ package com.yrxh.service.impl;
 import com.yrxh.dao.HouseDao;
 import com.yrxh.modle.House;
 import com.yrxh.service.HouseService;
+import com.yrxh.util.LogUtils;
 import com.yrxh.util.ParamMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,13 @@ public class HouseServiceImpl implements HouseService {
 
         return  houseDao.insert(house);
     }
+
+    @Override
+    public List<House> findList(ParamMap paramMap) {
+        LogUtils.info("开始执行查询操作");
+        List<House> list = houseDao.selectHouseList(paramMap);
+        return list;
+    }
+
 
 }
