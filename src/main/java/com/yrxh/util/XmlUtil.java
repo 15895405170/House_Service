@@ -22,7 +22,7 @@ public class XmlUtil {
     public  List<House> addInfo() {
         try {
             //同时支持Excel 2003、2007
-            File excelFile = new File("E:/information.xlsx"); //创建文件对象
+            File excelFile = new File("D:/information.xlsx"); //创建文件对象
             FileInputStream is = new FileInputStream(excelFile); //文件流
             Workbook workbook = WorkbookFactory.create(is); //这种方式 Excel 2003/2007/2010 都是可以处理的
             int sheetCount = workbook.getNumberOfSheets();  //Sheet的数量
@@ -105,7 +105,8 @@ public class XmlUtil {
             house.setCommunity(list[1]);
             house.setLocation(list[2]);
             house.setOwner(list[3]);
-            house.setArea(list[4]);
+            if(!list[4].equals(""))
+                house.setArea(Integer.parseInt(list[4]));
             house.setPhone(list[5]);
             house.setHouseType1(list[6]);
             house.setHouseType2(list[7]);

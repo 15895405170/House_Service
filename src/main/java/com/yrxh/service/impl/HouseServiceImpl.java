@@ -31,5 +31,10 @@ public class HouseServiceImpl implements HouseService {
         return list;
     }
 
+    @Override
+    public Integer findListCount(ParamMap paramMap) {
+        return houseDao.selectHouseListCount(paramMap);
+    }
+
 
 }

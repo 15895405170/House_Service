@@ -12,5 +12,7 @@ public interface HouseDao {
     int insert(House house);
 
     List<House> selectHouseList(ParamMap paramMap);
+
+    Integer selectHouseListCount(ParamMap paramMap);
 }
 

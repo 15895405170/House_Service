@@ -8,7 +8,7 @@ public class House {
     private String community;
     private String location;
     private String owner;
-    private String area;
+    private Integer area;
     private String phone;
     private String houseType1;
     private String houseType2;
@@ -17,10 +17,13 @@ public class House {
     private String repair2;
     private String remark;
 
+    private String houseType;
+
+
     public House() {
     }
 
-    public House(Integer id, String community, String location, String owner, String area, String phone, String houseType1, String houseType2, String houseType3, String repair1, String repair2, String remark) {
+    public House(Integer id, String community, String location, String owner, Integer area, String phone, String houseType1, String houseType2, String houseType3, String repair1, String repair2, String remark) {
         this.id = id;
         this.community = community;
         this.location = location;
@@ -33,6 +36,14 @@ public class House {
         this.repair1 = repair1;
         this.repair2 = repair2;
         this.remark = remark;
+    }
+
+    public String getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
     }
 
     public String getRemark() {
@@ -75,11 +86,11 @@ public class House {
         this.owner = owner;
     }
 
-    public String getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(Integer area) {
         this.area = area;
     }
 

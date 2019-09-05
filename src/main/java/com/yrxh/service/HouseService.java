@@ -13,4 +13,6 @@ public interface HouseService {
 
     List<House> findList(ParamMap paramMap);
 
+    Integer findListCount(ParamMap paramMap);
+
 }
