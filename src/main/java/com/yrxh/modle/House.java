@@ -18,12 +18,13 @@ public class House {
     private String remark;
 
     private String houseType;
+    private String repair;
 
 
     public House() {
     }
 
-    public House(Integer id, String community, String location, String owner, Integer area, String phone, String houseType1, String houseType2, String houseType3, String repair1, String repair2, String remark) {
+    public House(Integer id, String community, String location, String owner, Integer area, String phone, String houseType1, String houseType2, String houseType3, String repair1, String repair2, String remark, String houseType, String repair) {
         this.id = id;
         this.community = community;
         this.location = location;
@@ -36,6 +37,16 @@ public class House {
         this.repair1 = repair1;
         this.repair2 = repair2;
         this.remark = remark;
+        this.houseType = houseType;
+        this.repair = repair;
+    }
+
+    public String getRepair() {
+        return repair;
+    }
+
+    public void setRepair(String repair) {
+        this.repair = repair;
     }
 
     public String getHouseType() {
