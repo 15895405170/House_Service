@@ -15,4 +15,5 @@ public interface HouseService {
 
     Integer findListCount(ParamMap paramMap);
 
+    Integer delHouse(Integer id);
 }

@@ -14,5 +14,7 @@ public interface HouseDao {
     List<House> selectHouseList(ParamMap paramMap);
 
     Integer selectHouseListCount(ParamMap paramMap);
+
+    Integer delHouse(Integer id);
 }
 

@@ -36,5 +36,11 @@ public class HouseServiceImpl implements HouseService {
         return houseDao.selectHouseListCount(paramMap);
     }
 
+    @Override
+    public Integer delHouse(Integer id) {
+
+        return houseDao.delHouse(id);
+    }
+
 
 }

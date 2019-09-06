@@ -120,5 +120,10 @@
         </if>
     </select>
 
+    <delete id="delHouse" parameterType="java.lang.Integer" >
+        DELETE from house_base
+        WHERE  id = #{id,jdbcType=INTEGER}
+    </delete>
+
 
 </mapper>

@@ -66,11 +66,13 @@ public class HouseController {
     }
 
     @RequestMapping(value="/delete",method= RequestMethod.POST)
-    public Response delete(@RequestBody  House house) throws Exception{
-
-        Integer count=0;
-
-        return Response.newResponse().setResults(count,"1111");
+    public Response delete(@RequestBody  ParamMap paramMap) throws Exception{
+        String[] ids = paramMap.get("ids").toString().split(",");
+        Integer count = 0;
+        for(String id : ids ){
+            count+=houseService.delHouse(Integer.parseInt(id.trim()));
+        }
+        return Response.newResponse().setResults(count,"删除数据成功");
     }
 
 
