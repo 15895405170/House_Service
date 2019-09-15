@@ -50,6 +50,10 @@ public class HouseController {
     public Response getList(@RequestBody  ParamMap paramMap) throws Exception{
         if(paramMap.get("community").equals("")){
             paramMap.remove("community");
+        }else {
+            String c = "%"+paramMap.get("community").toString()+"%";
+            paramMap.remove("community");
+           paramMap.put("community",c);
         }
         if(paramMap.get("maxArea").equals("")){
             paramMap.remove("maxArea");
@@ -76,9 +80,15 @@ public class HouseController {
     }
 
 
-    @RequestMapping(value="/test",method= RequestMethod.GET)
-    public Response test() throws Exception{
+    @RequestMapping(value="/initAdd",method= RequestMethod.POST)
+    public Response initInsert() throws Exception{
+        XmlUtil add =new XmlUtil();
+        List<House> list= add.addInfo();
+        Integer count=0;
+        for(House house:list){
+            count=this.houseService.insert(house);
+        }
 
-        return Response.newResponse().setData("成功");
+        return Response.newResponse().setResults(count,count==1?"添加成功":"添加失败");
     }
 }

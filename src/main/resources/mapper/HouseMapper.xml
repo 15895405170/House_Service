@@ -93,7 +93,7 @@
       SELECT * from house_base
       WHERE 1=1
       <if test="community !=null">
-          and community = #{community}
+          and community like #{community}
       </if>
       <if test="minArea !=null">
           and area <![CDATA[>=]]> #{minArea}
@@ -110,7 +110,7 @@
         SELECT count(0) from house_base
         WHERE 1=1
         <if test="community !=null">
-            and community = #{community}
+            and community like #{community}
         </if>
         <if test="minArea !=null">
             and area <![CDATA[>=]]> #{minArea}
